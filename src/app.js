@@ -1,19 +1,43 @@
 console.log('App.js is running')
 
-var template = (
-    <div>
-        <h1>Indecision App</h1>
-        <p>asdfasdfasdfasef</p>
-    </div>);
+const app = {
+    title: 'Indecision App',
+    subtitle: 'ReactJS App',
+    options: ['One', 'Two']
+}
 
-var templateTwo = (
+const template = (
     <div>
-        <h1>Giovanni Gualiato</h1>
-        <p>Age: 20</p>
-        <p>Location: Santo André</p>
+        <h1>{app.title}</h1>
+        {app.subtitle && <p>{app.subtitle}</p>}
+        <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+        <ol>
+            <li>Item one</li>
+            <li>Item two</li>
+        </ol>
+    </div>)
+
+const user = {
+    name: 'Giovanni',
+    age: 20,
+    location: 'Santo André'
+}
+
+function getLocation(location) {
+    if (location) {
+        return <p>Location: {location}</p>
+    }
+}
+
+const templateTwo = (
+    <div>
+        <h1>{user.name ? user.name : 'Anonymous'}</h1>
+        {false}
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}        
+        {getLocation(user.location)}    
     </div>
 )
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

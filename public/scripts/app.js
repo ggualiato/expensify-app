@@ -1,42 +1,35 @@
 'use strict';
 
-console.log('App.js is running');
+var add = function add(a, b) {
+    // console.log(arguments)
+    return a + b;
+};
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Indecision App'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'asdfasdfasdfasef'
-    )
-);
+console.log(add(50, 1, 2));
 
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Giovanni Gualiato'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Age: 20'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Location: Santo Andr\xE9'
-    )
-);
+var user = {
+    name: 'Giovanni',
+    cities: ['Santo André', 'São Paulo', 'Campinas'],
+    printPlacesLived: function printPlacesLived() {
+        var _this = this;
 
-var appRoot = document.getElementById('app');
+        return this.cities.map(function (city) {
+            return _this.name + ' has lived in ' + city;
+        });
+    }
+};
+console.log(user.printPlacesLived());
 
-ReactDOM.render(templateTwo, appRoot);
+//Challenge
+var multiplier = {
+    numbers: [1, 2, 3, 4, 5],
+    multiplyBy: 2,
+    multiply: function multiply() {
+        var _this2 = this;
+
+        return this.numbers.map(function (number) {
+            return _this2.multiplyBy * number;
+        });
+    }
+};
+console.log(multiplier.multiply());
