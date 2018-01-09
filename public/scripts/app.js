@@ -1,35 +1,38 @@
 'use strict';
 
-var add = function add(a, b) {
-    // console.log(arguments)
-    return a + b;
+console.log('build-it-visible.js is running');
+
+var appRoot = document.getElementById('app');
+
+var hide = true;
+
+var showDetails = function showDetails() {
+    hide = !hide;
+    renderVisibleApp();
 };
 
-console.log(add(50, 1, 2));
+var renderVisibleApp = function renderVisibleApp() {
+    var template = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'Visibility Toogle'
+        ),
+        React.createElement(
+            'button',
+            { onClick: showDetails },
+            hide ? 'Show details' : 'Hide details'
+        ),
+        React.createElement(
+            'p',
+            { hidden: hide },
+            'Details Here!!!'
+        )
+    );
 
-var user = {
-    name: 'Giovanni',
-    cities: ['Santo André', 'São Paulo', 'Campinas'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-    }
+    ReactDOM.render(template, appRoot);
 };
-console.log(user.printPlacesLived());
 
-//Challenge
-var multiplier = {
-    numbers: [1, 2, 3, 4, 5],
-    multiplyBy: 2,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return _this2.multiplyBy * number;
-        });
-    }
-};
-console.log(multiplier.multiply());
+renderVisibleApp();
