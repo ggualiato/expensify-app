@@ -1,11 +1,33 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-//components
-import IndecisionApp from './components/IndecisionApp'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 //styles
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
+const ExpenseDashboardPage = () => (
+    <div>
+        This is from my dashboard component
+    </div>
+)
+
+const AddExpensePage = () => (
+    <div>
+        This is from my add expense component
+    </div>
+)
+
+const routes = (
+    <BrowserRouter>
+        <div>
+            <Route path="/" component={ExpenseDashboardPage} />
+            <Route path="/create" component={AddExpensePage}/>
+        </div>
+
+
+
+    </BrowserRouter>
+)
+
+ReactDOM.render(routes, document.getElementById('app'))
