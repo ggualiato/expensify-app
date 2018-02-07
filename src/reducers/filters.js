@@ -21,7 +21,7 @@ export default (state = filtersReducerDefaultState, action) => {
         case 'SORT_BY_AMOUNT':
             return {
                 ...state,
-                text: 'amount'
+                sortBy: 'amount'
             }
         case 'SET_START_DATE':
             return {
